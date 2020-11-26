@@ -55,4 +55,5 @@ public class StaticProxy {
         //线程也是这么搞得。比如：
         new Thread(()->System.out.println("哪个傻逼结婚")).start();
     }
+
 }

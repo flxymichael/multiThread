@@ -56,4 +56,6 @@ public class StaticProxy {
         new Thread(()->System.out.println("哪个傻逼结婚")).start();
     }
 
+
+
 }

@@ -71,5 +71,8 @@ public class Lambda {
         //简化大括号（只有一样代码时才可以，类似于if如果后面只有一行的话，可以简化大括号）
         like = a->System.out.println("I love you-->"+a);
         like.love(8);
+
+
+
     }
 }

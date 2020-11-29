@@ -11,9 +11,9 @@ public class UnsafeBuyTicket {
         Thread thread2 = new Thread(customer, "淘宝店");
 
         //由于线程不安全，此处会出现多人买到同一张票的情况。
-        thread0.start();
         thread1.start();
         thread2.start();
+        thread0.start();
     }
 
 
@@ -24,6 +24,7 @@ class Customer implements Runnable {
     public void run() {
         while (flag) {
             try {
+                Thread.sleep(100);//模拟延时
                 buy();
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -31,15 +32,15 @@ class Customer implements Runnable {
         }
     }
 
-    private int nums = 10;
+    private int nums = 100;
     public boolean flag = true;
 
-    public void buy() throws InterruptedException {
+    //加上synchronized关键字就同步了,锁的是this
+    public synchronized void  buy() {
         if (nums < 0) {
             flag = false;
             return;
         }
-        Thread.sleep(100);//模拟延时
         System.out.println(Thread.currentThread().getName() + "拿到了" + nums--);
     }
 }

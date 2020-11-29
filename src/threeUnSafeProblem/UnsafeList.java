@@ -7,7 +7,11 @@ public class UnsafeList {
     public static void main(String[] args) throws InterruptedException {
         List<String> list = new ArrayList<>();
         for (int i = 0; i <100000 ; i++) {
-            new Thread(()->list.add(Thread.currentThread().getName())).start();
+            new Thread(()->{
+                synchronized (list){
+                    list.add(Thread.currentThread().getName());
+                }
+            }).start();
         }
 
         Thread.sleep(1000);

@@ -1,4 +1,4 @@
-package threadSafe;
+package threeUnSafeProblem;
 
 public class UnsafeBuyTicket {
 

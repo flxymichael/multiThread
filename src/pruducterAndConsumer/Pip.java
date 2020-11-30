@@ -1,6 +1,9 @@
 package pruducterAndConsumer;
 
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 //线程间通信一般有管程法和信号灯法，此处用管程法演示生产者-消费者模型
 public class Pip {
     public static void main(String[] args) {
@@ -10,6 +13,7 @@ public class Pip {
         Customer customer01 = new Customer(productContainer);
 
         new Thread(producer01,"producer01").start();
+        new Thread(producer01,"producer02").start();
         new Thread(customer01,"customer01").start();
     }
 }
@@ -26,7 +30,7 @@ class Producer implements Runnable{
             try {
                 Thread.sleep(100);
                 productContainer.push(new Product(i));
-                System.out.println("生产了"+i+"号产品");
+                System.out.println(Thread.currentThread().getName()+"生产了"+i+"号产品");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -46,7 +50,7 @@ class Customer implements Runnable{
             try {
                 Thread.sleep(100);
                 Product product = productContainer.consume();
-                System.out.println("消费了"+product.id+"号产品");
+                System.out.println(Thread.currentThread().getName()+"消费了"+product.id+"号产品");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -67,13 +71,20 @@ class ProductContainer{
     Product[] products = new Product[MAX_NUM];
     public synchronized void push(Product product) throws InterruptedException {
         //如果容器满了，通知消费者消费
-        if (count==MAX_NUM){
-           this.wait();
-        }
+
+        //多个线程阻塞于此，当被notifyAll时，第一个被唤醒的线程拿到count==MAX_NUM-1没问题，第二个就惨了.
+//        if (count==MAX_NUM){
+//           this.wait();
+//        }
+
+        //改用while解决了数组越界的问题，但是现在多个生产者会生产同一个商品，为什么？
+          while (count>=MAX_NUM){
+              this.wait();
+          }
         //没满就继续生产
-        products[count]=product;
-        count++;
-        this.notifyAll();
+            products[count]=product;
+            count++;
+            this.notifyAll();
     }
 
     public synchronized Product consume() throws InterruptedException {

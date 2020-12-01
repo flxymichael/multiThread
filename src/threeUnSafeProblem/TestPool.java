@@ -14,6 +14,8 @@ public class TestPool {
         service.execute(new MyThread());
         service.execute(new MyThread());
         service.execute(new MyThread());
+
+        service.shutdown();
     }
 
 }

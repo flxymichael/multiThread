@@ -1,7 +1,7 @@
 /**
  * 学习lambda表达式
  */
-//函数式接口：只有一个抽象方法的借口,通常用lambda表达式来创建该接口的对象
+//函数式接口：只有一个抽象方法的接口,通常用lambda表达式来创建该接口的对象
 interface ILove{
     abstract void love(int a);
 }

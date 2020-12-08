@@ -62,6 +62,7 @@ class Product {
     }
 }
 
+//判断等待、业务、通知
 class ProductContainer {
     private int MAX_NUM = 10;
     private int count = 0;
@@ -71,11 +72,12 @@ class ProductContainer {
         //如果容器满了，通知消费者消费
 
         //多个线程阻塞于此，当被notifyAll时，第一个被唤醒的线程拿到count==MAX_NUM-1没问题，第二个就惨了.
+        //线程被唤醒的时候会执行wait后面的代码，if判断会直接跳过此处，而while则会再判断一次
 //        if (count==MAX_NUM){
 //           this.wait();
 //        }
 
-        //改用while解决了数组越界的问题，但是现在多个生产者会生产同一个商品，为什么？
+        //改用while解决了数组越界的问题
         while (count >= MAX_NUM) {
             try {
                 this.wait();

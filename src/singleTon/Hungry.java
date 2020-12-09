@@ -1,4 +1,4 @@
-package SingleTon;
+package singleTon;
 
 //单例：构造器私有，全局只提供一个对象，且只由自己提供
 //饿汉式单例

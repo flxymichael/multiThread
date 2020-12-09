@@ -1,3 +1,5 @@
+package threadStatus;
+
 public class ThreadJoin implements Runnable{
     @Override
     public void run() {

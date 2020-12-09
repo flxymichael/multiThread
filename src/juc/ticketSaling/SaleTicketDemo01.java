@@ -1,4 +1,4 @@
-package juc;
+package juc.ticketSaling;
 //基本的卖票例子
 
 /**

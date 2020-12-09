@@ -1,4 +1,4 @@
-package juc;
+package juc.ticketSaling;
 //基本的卖票例子
 
 import java.util.concurrent.locks.Lock;

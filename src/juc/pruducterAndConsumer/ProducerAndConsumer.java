@@ -1,4 +1,4 @@
-package juc;
+package juc.pruducterAndConsumer;
 
 /**
  * 生产者消费者问题
@@ -7,7 +7,7 @@ package juc;
 public class ProducerAndConsumer {
 
     public static void main(String[] args) {
-        Product product = new Product();
+        Product01 product = new Product01();
         //这种写法没有错，但是企业一般不这么搞，企业的搞法参照SaleTicketDemo02WithLock
 //        new Thread(new Producer(product),"生产者1").start();
 //        new Thread(new Producer(product),"生产者2").start();
@@ -57,7 +57,7 @@ public class ProducerAndConsumer {
 //    }
 //}
 
-class Product {
+class Product01 {
     int nums;
     public synchronized void increase() {
 

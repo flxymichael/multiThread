@@ -1,4 +1,4 @@
-package pruducterAndConsumer;
+package juc.pruducterAndConsumer;
 //生产者消费者问题解决方法2：信号灯，标志位
 //管道法中的管道有没有满，不就是一个标志吗？
 public class SignalLight {

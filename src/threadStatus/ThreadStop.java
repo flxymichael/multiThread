@@ -1,3 +1,5 @@
+package threadStatus;
+
 //通过标识为来使线程停止
 //jdk不建议使用thread.stop（）方法
 public class ThreadStop implements Runnable {

@@ -1,4 +1,4 @@
-package SingleTon;
+package singleTon;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

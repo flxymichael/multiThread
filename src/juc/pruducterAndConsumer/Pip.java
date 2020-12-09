@@ -1,8 +1,5 @@
-package pruducterAndConsumer;
+package juc.pruducterAndConsumer;
 
-
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 //线程间通信一般有管程法和信号灯法，此处用管程法演示生产者-消费者模型
 public class Pip {

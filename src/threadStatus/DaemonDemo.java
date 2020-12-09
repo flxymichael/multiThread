@@ -1,10 +1,10 @@
-//线程优先级分为1-10，越高，被执行的概率越大，看cpu心情
+package threadStatus;//线程优先级分为1-10，越高，被执行的概率越大，看cpu心情
 //用Thread.getPriority()和 Thread.setPriority()来查看修改线程状态
 //线程分为用户线程（比如main线程） 和守护线程（比如gc）
 //虚拟机必须保证用户线程执行完毕，但不用确保daemon执行完毕
 
 
-public class TestDaemon {
+public class DaemonDemo {
     public static void main(String[] args) {
         God god = new God();
         Thread threadGod = new Thread(god);
